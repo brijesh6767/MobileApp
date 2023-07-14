@@ -1,5 +1,5 @@
 export enum ROUTE_NAME {
     LOGIN = 'Login',
-    PAGE2 ='Page2',
+    PAGE2 ="Page2",
   }
   
