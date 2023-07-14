@@ -1,13 +1,15 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import RootNavigator from './src/components/navigations/RootNavigator'
+import {View, Text} from 'react-native';
+import React from 'react';
+import RootNavigator from './src/components/navigations/RootNavigator';
+import store from './src/domain/redux/store';
+import {Provider} from 'react-redux';
 
-const App = () => {
+const App: React.FC = () => {
   return (
-    <View style={{flex:1}}>
-     <RootNavigator/>
-    </View>
-  ) 
-}
+    <Provider store={store}>
+      <RootNavigator />
+    </Provider>
+  );
+};
 
-export default App
+export default App;
