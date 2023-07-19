@@ -2,13 +2,17 @@ import {configureStore, getDefaultMiddleware} from '@reduxjs/toolkit';
 import rootReducer from './reducers/RootReducer';
 import {loginApi} from './RTKQuery/login';
 import {setupListeners} from '@reduxjs/toolkit/dist/query';
+import { loginUpdate } from './RTKQuery/loginUpdate';
 
 const store = configureStore({
   reducer: rootReducer,
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: false,
-    }).concat([loginApi.middleware]),
+    }).concat([
+      loginApi.middleware,
+      loginUpdate.middleware,
+    ]),
 });
 
 setupListeners(store.dispatch);

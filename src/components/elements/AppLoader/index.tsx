@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, ActivityIndicator,StyleSheet} from 'react-native';
+import {View, ActivityIndicator,StyleSheet, Text} from 'react-native';
 
 
 const AppLoader = (): JSX.Element => {
@@ -9,6 +9,7 @@ const AppLoader = (): JSX.Element => {
         size={'large'}
         color={'blue'}
       />
+      <Text style={styles.txt}>Please Wait.....</Text>
     </View>
   );
 };
@@ -24,6 +25,12 @@ const styles = StyleSheet.create({
     width: '100%',
     zIndex: 2,
     position: 'absolute',
+    
+   },
+   txt:{
+    fontSize:20,
+    fontWeight:'bold',
+   
    }
 
 })

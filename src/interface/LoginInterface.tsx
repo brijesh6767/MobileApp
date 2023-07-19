@@ -30,11 +30,22 @@ export interface ILogin {
 
 export interface ILoginCompo {
   status: boolean;
-  data: any[];
+  data: any[] ;
   message: string;
+
+ 
 }
 // Age: string;
 //  Gender: string;
 //  Mobile: string;
 //  NAME: string;
 //  PhlebotomistID: number;
+
+export interface ILoginUpdate {
+
+  Selfie:string ;
+  Bag:string |any ;
+  Bike:string ;
+  PhelbotomistID:number;
+
+}

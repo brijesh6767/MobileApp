@@ -11,6 +11,7 @@ import NormalButton from '../../elements/NormalButton';
 import {useLoginApiMutation} from '../../../domain/redux/RTKQuery/login';
 import {ILogin, ILoginCompo} from '../../../interface/LoginInterface';
 import DeviceInfo from 'react-native-device-info';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   appVersion,
   batteryLavel,
@@ -55,15 +56,29 @@ const Login: React.FC<ILoginCompo> = props => {
     }
   };
 
+const saveUserDataLocally =async()=>{
+  try {
+     if (loginResult && loginResult.data) {
+      await AsyncStorage.setItem('data', JSON.stringify(loginResult?.data?.data));
+    }
+    
+  } catch (error) {
+    console.log('error', error);
+  }
+
+}
+
+
   useEffect(() => {
     if (loginResult.isLoading) {
       setIsLoading(true);
       setError('');
     } else if (loginResult.isSuccess) {
-      if (loginResult?.data?.status) {
+      if (loginResult?.data?.status  ) {
         console.log('Login successful:', loginResult.data);
+        saveUserDataLocally();
         setIsLoading(false);
-        navigation.navigate(ROUTE_NAME.PAGE2, { userData: loginResult.data.data,});
+        navigation.navigate(ROUTE_NAME.PHELBO_PIC);
       } else {
         console.log('Login failed:', loginResult?.data?.message);
         setIsLoading(false);

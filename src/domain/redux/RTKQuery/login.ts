@@ -41,7 +41,8 @@ export const loginApi = createApi({
         },
       }),
 
-      // invalidatesTags: ['send-otp'],
+      
+
     }),
   }),
 });
