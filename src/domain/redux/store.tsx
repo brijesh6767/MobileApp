@@ -3,6 +3,7 @@ import rootReducer from './reducers/RootReducer';
 import {loginApi} from './RTKQuery/login';
 import {setupListeners} from '@reduxjs/toolkit/dist/query';
 import { loginUpdate } from './RTKQuery/loginUpdate';
+import { myProfile } from './RTKQuery/myProfile';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -12,6 +13,7 @@ const store = configureStore({
     }).concat([
       loginApi.middleware,
       loginUpdate.middleware,
+      myProfile.middleware,
     ]),
 });
 

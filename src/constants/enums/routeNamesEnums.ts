@@ -4,5 +4,7 @@ export enum ROUTE_NAME {
     BIKE_PIC='BikePicture',
     BAG_PHOTO='BagPhoto',
     DASHBOARD='Dashboard',
+    MY_PROFILE='MyProfile',
+    MY_JOB='Myjob',
   }
   

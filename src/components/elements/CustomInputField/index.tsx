@@ -4,6 +4,7 @@ import {styles} from './styles';
 import { ICustomInputField } from '../../../interface/LoginInterface';
 
 const CustomInputField: React.FC<ICustomInputField & TextInputProps> = ({
+  
   lable,
   value,
   placeholder,

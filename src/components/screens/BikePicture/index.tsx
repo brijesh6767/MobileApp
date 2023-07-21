@@ -9,7 +9,7 @@ import {
 } from 'react-native-vision-camera';
 import {windowWidth, windowHeight} from '../../../constants/enums/dynamicSize';
 import {ITakePicture} from '../../../interface/TakePicture';
-import { scaleHeight,scaleWidth } from '../../../constants/enums/dynamicSize';
+import { scaleHeight,scaleWidth ,normalizeFont} from '../../../constants/enums/dynamicSize';
 import NormalButton from '../../elements/NormalButton';
 import { useNavigation } from '@react-navigation/native';
 import { ROUTE_NAME } from '../../../constants/enums/routeNamesEnums';
@@ -128,7 +128,8 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15,
+    color:COLORS.BLACK,
+    fontSize:normalizeFont(15),
   },
   container: {
    alignItems: 'center',

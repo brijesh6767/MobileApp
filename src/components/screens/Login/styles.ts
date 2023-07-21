@@ -1,6 +1,6 @@
 import { StyleSheet} from 'react-native'
 import { COLORS } from '../../../constants/colors/Colors'
-import { scaleHeight, scaleWidth } from '../../../constants/enums/dynamicSize'
+import { normalizeFont, scaleHeight, scaleWidth } from '../../../constants/enums/dynamicSize'
 
  export const styles = StyleSheet.create({
     mainContanier:{
@@ -14,8 +14,8 @@ import { scaleHeight, scaleWidth } from '../../../constants/enums/dynamicSize'
         flex:1
     },
     imgLogo:{
-        width:scaleWidth(335),
-        height:scaleHeight(120),
+        width:scaleWidth(330),
+        height:scaleHeight(110),
         marginTop:scaleHeight(80)
     },
     InputView:{
@@ -25,11 +25,13 @@ import { scaleHeight, scaleWidth } from '../../../constants/enums/dynamicSize'
     checkboxView:{
         flexDirection:'row',
         marginLeft:scaleWidth(4),
-        marginTop:scaleHeight(5)
+        marginTop:scaleHeight(5),
+       
     },
     TxtStyl:{
         marginTop:scaleHeight(5),
-        fontSize:15
+        fontSize:normalizeFont(15),
+        color:'black'
     },
     paaViewTxt:{
         flexDirection:'row',
@@ -39,7 +41,8 @@ import { scaleHeight, scaleWidth } from '../../../constants/enums/dynamicSize'
     },
     TxtStyl1:{
         marginTop:scaleHeight(5),
-        fontSize:15
+        fontSize:normalizeFont(15),
+        color:'black'
     },
     btn:{
         marginTop:scaleHeight(60)

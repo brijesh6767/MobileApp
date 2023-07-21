@@ -16,13 +16,17 @@ import {
 } from 'react-native-vision-camera';
 import {windowWidth, windowHeight} from '../../../constants/enums/dynamicSize';
 import {ITakePicture} from '../../../interface/TakePicture';
-import {scaleHeight, scaleWidth} from '../../../constants/enums/dynamicSize';
+import {
+  scaleHeight,
+  scaleWidth,
+  normalizeFont,
+} from '../../../constants/enums/dynamicSize';
 import NormalButton from '../../elements/NormalButton';
 import {useNavigation} from '@react-navigation/native';
 import {getDataFomLocalStore} from '../../../utils/helperFunction';
 import {useLoginUpdateMutation} from '../../../domain/redux/RTKQuery/loginUpdate';
 import {ILoginUpdate} from '../../../interface/LoginInterface';
-import { ROUTE_NAME } from '../../../constants/enums/routeNamesEnums';
+import {ROUTE_NAME} from '../../../constants/enums/routeNamesEnums';
 
 const BagPhoto: React.FC<ITakePicture> = ({route}: any) => {
   const {imgPath, bikePic} = route.params;
@@ -40,7 +44,6 @@ const BagPhoto: React.FC<ITakePicture> = ({route}: any) => {
   const [logiUpdateApi, logiUpdateApiResult] = useLoginUpdateMutation();
   console.log('responce@@@@@@@', logiUpdateApiResult);
 
-
   useEffect(() => {
     if (logiUpdateApiResult.isLoading) {
       setIsLoading(true);
@@ -48,7 +51,9 @@ const BagPhoto: React.FC<ITakePicture> = ({route}: any) => {
     } else if (logiUpdateApiResult.isSuccess) {
       setIsLoading(false);
       // SetOtpp(sendOtpResult?.data?.otp)
-      navigation.navigate(ROUTE_NAME.DASHBOARD);
+      {
+        imgData ? navigation.navigate(ROUTE_NAME.DASHBOARD) : null;
+      }
     } else if (logiUpdateApiResult.isError) {
       setIsLoading(false);
       setError(error);
@@ -118,12 +123,10 @@ const BagPhoto: React.FC<ITakePicture> = ({route}: any) => {
       console.log('Error:', error);
     }
   };
-  
 
   return (
-
     <View style={styles.container}>
-           { isLoading && <AppLoader/>}
+      {isLoading && <AppLoader />}
 
       <View style={styles.headerView}>
         <Text style={styles.txtstyl}>Max Phelbo UAT</Text>
@@ -196,7 +199,8 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15,
+    color: COLORS.BLACK,
+    fontSize: normalizeFont(15),
   },
   container: {
     alignItems: 'center',

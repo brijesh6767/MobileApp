@@ -7,7 +7,7 @@ import {
   useCameraDevices,
   CameraDevice,
 } from 'react-native-vision-camera';
-import {windowWidth, windowHeight} from '../../../constants/enums/dynamicSize';
+import {windowWidth, windowHeight, normalizeFont} from '../../../constants/enums/dynamicSize';
 import {ITakePicture} from '../../../interface/TakePicture';
 import { scaleHeight,scaleWidth } from '../../../constants/enums/dynamicSize';
 import NormalButton from '../../elements/NormalButton';
@@ -131,7 +131,8 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize: 15,
+    fontSize:normalizeFont(15),
+    color:COLORS.BLACK,
   },
   container: {
    alignItems: 'center',
