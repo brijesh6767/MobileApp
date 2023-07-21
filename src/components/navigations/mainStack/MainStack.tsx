@@ -9,6 +9,8 @@ import PhelboPictures from '../../screens/PhelboPictures';
 import BikePicture from '../../screens/BikePicture';
 import BagPhoto from '../../screens/BagPhoto';
 import Dashboard from '../../screens/Dashboard';
+import MyProfile from '../../screens/MyProfile';
+import MyJob from '../../screens/MyJob';
 
 
 const Stack = createStackNavigator<RootStackParamList>();
@@ -22,6 +24,9 @@ const MainStack: React.FC = () => {
       <Stack.Screen name={ROUTE_NAME.BIKE_PIC} component={BikePicture} />
       <Stack.Screen name={ROUTE_NAME.BAG_PHOTO} component={BagPhoto} />
       <Stack.Screen name={ROUTE_NAME.DASHBOARD} component={Dashboard} />
+      <Stack.Screen name={ROUTE_NAME.MY_PROFILE} component={MyProfile} />
+      <Stack.Screen name={ROUTE_NAME.MY_JOB} component={MyJob} />
+
 
     </Stack.Navigator>
   );

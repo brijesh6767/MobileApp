@@ -7,6 +7,7 @@ export interface ICustomInputField {
   PlaceholderColor?: string;
   customlablestyl?: ViewStyle;
   imageSource?: any;
+  
 }
 
 export interface ILogin {

@@ -20,6 +20,7 @@ import {
   deviceModal,
 } from '../../../utils/deviceInfoUtils';
 import AppLoader from '../../elements/AppLoader';
+import {COLORS} from '../../../constants/colors/Colors';
 
 const Login: React.FC<ILoginCompo> = props => {
   const [login, loginResult] = useLoginApiMutation();
@@ -56,28 +57,33 @@ const Login: React.FC<ILoginCompo> = props => {
     }
   };
 
-const saveUserDataLocally =async()=>{
-  try {
-     if (loginResult && loginResult.data) {
-      await AsyncStorage.setItem('data', JSON.stringify(loginResult?.data?.data));
+  const saveUserDataLocally = async () => {
+    try {
+      if (loginResult && loginResult.data) {
+        await AsyncStorage.setItem(
+          'data',
+          JSON.stringify(loginResult?.data?.data),
+        );
+      }
+    } catch (error) {
+      console.log('error', error);
     }
-    
-  } catch (error) {
-    console.log('error', error);
-  }
-
-}
-
+  };
 
   useEffect(() => {
     if (loginResult.isLoading) {
       setIsLoading(true);
       setError('');
     } else if (loginResult.isSuccess) {
-      if (loginResult?.data?.status  ) {
+      if (loginResult?.data?.status) {
         console.log('Login successful:', loginResult.data);
         saveUserDataLocally();
         setIsLoading(false);
+       
+          setUserId('');
+          setPassword('');
+        
+       
         navigation.navigate(ROUTE_NAME.PHELBO_PIC);
       } else {
         console.log('Login failed:', loginResult?.data?.message);
@@ -98,24 +104,29 @@ const saveUserDataLocally =async()=>{
 
   return (
     <View style={styles.mainContanier}>
-      {isLoading && <AppLoader/>}
+      {isLoading && <AppLoader />}
       <View style={styles.mainView}>
         <Image source={IMAGES.LOGO} style={styles.imgLogo} />
         <View style={styles.InputView}>
           <CustomInputField
+          value={userId}
             imageSource={IMAGES.PROFILE}
             placeholder={ConstantText.UserID}
             onChangeText={(userId: string) => setUserId(userId)}
+            PlaceholderColor={COLORS.BLACK}
           />
           <CustomInputField
+          value={password}
             imageSource={IMAGES.LOCK}
             placeholder={ConstantText.PASSWORD}
             secureTextEntry={!showPassword}
+            PlaceholderColor={COLORS.BLACK}
             onChangeText={(userId: string) => setPassword(userId)}
           />
         </View>
         <View style={styles.checkboxView}>
           <CheckBox
+            tintColors={{true: COLORS.BLUE}}
             disabled={false}
             value={showPassword}
             onValueChange={() => {
