@@ -22,7 +22,7 @@ import {
 import AppLoader from '../../elements/AppLoader';
 import {COLORS} from '../../../constants/colors/Colors';
 
-const Login: React.FC<ILoginCompo> = props => {
+const Login: React.FC<ILoginCompo> = () => {
   const [login, loginResult] = useLoginApiMutation();
   const [isLoading, setIsLoading] = React.useState(false);
   const [userId, setUserId] = React.useState<string>('');
@@ -79,12 +79,11 @@ const Login: React.FC<ILoginCompo> = props => {
         console.log('Login successful:', loginResult.data);
         saveUserDataLocally();
         setIsLoading(false);
-       
-          setUserId('');
-          setPassword('');
-        
-       
-        navigation.navigate(ROUTE_NAME.PHELBO_PIC);
+
+        setUserId('');
+        setPassword('');
+
+        navigation.navigate(ROUTE_NAME.PHELBO_PIC );
       } else {
         console.log('Login failed:', loginResult?.data?.message);
         setIsLoading(false);
@@ -109,14 +108,14 @@ const Login: React.FC<ILoginCompo> = props => {
         <Image source={IMAGES.LOGO} style={styles.imgLogo} />
         <View style={styles.InputView}>
           <CustomInputField
-          value={userId}
+            value={userId}
             imageSource={IMAGES.PROFILE}
             placeholder={ConstantText.UserID}
             onChangeText={(userId: string) => setUserId(userId)}
             PlaceholderColor={COLORS.BLACK}
           />
           <CustomInputField
-          value={password}
+            value={password}
             imageSource={IMAGES.LOCK}
             placeholder={ConstantText.PASSWORD}
             secureTextEntry={!showPassword}

@@ -4,6 +4,7 @@ import {loginApi} from './RTKQuery/login';
 import {setupListeners} from '@reduxjs/toolkit/dist/query';
 import { loginUpdate } from './RTKQuery/loginUpdate';
 import { myProfile } from './RTKQuery/myProfile';
+import { syncUpdate } from './RTKQuery/syncUpdate';
 
 const store = configureStore({
   reducer: rootReducer,
@@ -14,6 +15,7 @@ const store = configureStore({
       loginApi.middleware,
       loginUpdate.middleware,
       myProfile.middleware,
+      syncUpdate.middleware,
     ]),
 });
 

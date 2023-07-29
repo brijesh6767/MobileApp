@@ -10,4 +10,5 @@ export enum ConstantText {
     SYNC_UPDATE='Sync Update',
     SIGN_OUT='Sign Out',
     COMMING_SOON='Coming Soon',
+    APPOINTMENT='Appointment Details',
 }

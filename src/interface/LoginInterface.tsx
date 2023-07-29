@@ -41,7 +41,17 @@ export interface ILoginCompo {
 //  Mobile: string;
 //  NAME: string;
 //  PhlebotomistID: number;
+export interface ISyncUpdate{
+  AppVersion:number | string;
+  batterypercentage:number;
+  DeviceBrand:string;
+  deviceid:number|string
+  DeviceModel: string;
+  latitude: number;
+  longitude: number;
+  PhlebotomistID:number;
 
+}
 export interface ILoginUpdate {
 
   Selfie:string ;

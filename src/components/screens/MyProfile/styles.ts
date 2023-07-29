@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
     fontSize: normalizeFont(22),
     color: 'black',
     fontWeight: '800',
-    marginLeft: scaleWidth(80),
+    marginLeft: scaleWidth(85),
   },
   profileView: {
     // backgroundColor:'red',
@@ -55,7 +55,8 @@ export const styles = StyleSheet.create({
     backgroundColor: '#FBF8F3',
     borderRadius: 20,
   },
-  nameView:{marginTop: 8, marginLeft: scaleHeight(14)},
+  nameView:{marginTop: scaleHeight(8), 
+    marginLeft: scaleWidth(18)},
   userName: {
     fontSize: normalizeFont(20),
     color: 'black',

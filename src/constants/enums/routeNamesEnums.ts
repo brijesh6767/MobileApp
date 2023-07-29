@@ -6,5 +6,6 @@ export enum ROUTE_NAME {
     DASHBOARD='Dashboard',
     MY_PROFILE='MyProfile',
     MY_JOB='Myjob',
+    CARD_DETAILS='CardDetails',
   }
   
