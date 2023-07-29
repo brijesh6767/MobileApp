@@ -12,6 +12,11 @@ export  enum IMAGES {
     EMAIL = require('../../assets/images/gmail.png'),
     DOB= require('../../assets/images/date-of-birth.png'),
     MOBILE=require('../../assets/images/smartphone.png'),
-
+    Location=require('../../assets/images/locationn.png'),
+    BAG=require('../../assets/images/doctor-bag.png'),
+    MONEY=require('../../assets/images/money.png'),
+    CALL=require('../../assets/images/call.png'),
+    CHAT=require('../../assets/images/chat.png'),
+    THREE_DOT=require('../../assets/images/menu.png'),
 
 }

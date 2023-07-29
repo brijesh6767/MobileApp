@@ -1,31 +1,40 @@
-import {StyleSheet, Text, View, TouchableOpacity, Image, Alert} from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  TouchableOpacity,
+  Image,
+  Alert,
+} from 'react-native';
 import React, {useEffect, useRef, useState} from 'react';
 import AppLoader from '../../elements/AppLoader';
-import { COLORS } from '../../../constants/colors/Colors';
+import {COLORS} from '../../../constants/colors/Colors';
 import {
   Camera,
   useCameraDevices,
   CameraDevice,
 } from 'react-native-vision-camera';
-import {windowWidth, windowHeight, normalizeFont} from '../../../constants/enums/dynamicSize';
+import {
+  windowWidth,
+  windowHeight,
+  normalizeFont,
+} from '../../../constants/enums/dynamicSize';
 import {ITakePicture} from '../../../interface/TakePicture';
-import { scaleHeight,scaleWidth } from '../../../constants/enums/dynamicSize';
+import {scaleHeight, scaleWidth} from '../../../constants/enums/dynamicSize';
 import NormalButton from '../../elements/NormalButton';
-import { useNavigation } from '@react-navigation/native';
-import { ROUTE_NAME } from '../../../constants/enums/routeNamesEnums';
+import {useNavigation} from '@react-navigation/native';
+import {ROUTE_NAME} from '../../../constants/enums/routeNamesEnums';
 import RNFS from 'react-native-fs';
-
-
 
 const PhelboPicture: React.FC<ITakePicture> = ({lableTXT}) => {
   const [device, setDevice] = useState<CameraDevice | null>(null);
   const devices = useCameraDevices();
-  const navigation =useNavigation();
+  const navigation = useNavigation();
   const camera = useRef<Camera | null>(null);
   const frontDevice = devices.front;
   const [isActive, setIsActive] = useState(false);
   const [imgData, setImgData] = useState<String | undefined>('');
-  
+
   useEffect(() => {
     if (frontDevice) {
       setDevice(frontDevice);
@@ -54,7 +63,6 @@ const PhelboPicture: React.FC<ITakePicture> = ({lableTXT}) => {
     setImgData(photo?.path);
     setIsActive(false);
   };
- 
 
   return (
     <View style={styles.container}>
@@ -67,7 +75,6 @@ const PhelboPicture: React.FC<ITakePicture> = ({lableTXT}) => {
         {imgData !== '' && (
           <Image source={{uri: 'file://' + imgData}} style={styles.photo} />
         )}
-       
       </View>
       <TouchableOpacity style={styles.button} onPress={handleToggleCamera}>
         <Text style={styles.buttonText}>Click Here to Take Selfi</Text>
@@ -99,11 +106,20 @@ const PhelboPicture: React.FC<ITakePicture> = ({lableTXT}) => {
           }}
           onPress={takePicture}></TouchableOpacity>
       )}
-     {isActive ? null : <NormalButton 
-      title='Next'
-     CustomButtonStyle={styles.Btnstyl}
-     onPress={()=> {imgData === '' ? Alert.alert('Mandatory!!','Please click Photo to Procced further') :navigation.navigate(ROUTE_NAME.BIKE_PIC ,{PhelboImg :imgData})}}
-      />}
+      {isActive ? null : (
+        <NormalButton
+          title="Next"
+          CustomButtonStyle={styles.Btnstyl}
+          onPress={() => {
+            imgData === ''
+              ? Alert.alert(
+                  'Mandatory!!',
+                  'Please click Photo to Procced further',
+                )
+              : navigation.navigate(ROUTE_NAME.BIKE_PIC, {PhelboImg: imgData});
+          }}
+        />
+      )}
     </View>
   );
 };
@@ -117,7 +133,7 @@ const styles = StyleSheet.create({
     height: 40,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
-    justifyContent:'center'
+    justifyContent: 'center',
     // marginTop: 180,
   },
   headerView: {
@@ -131,14 +147,13 @@ const styles = StyleSheet.create({
   buttonText: {
     textAlign: 'center',
     fontWeight: 'bold',
-    fontSize:normalizeFont(15),
-    color:COLORS.BLACK,
+    fontSize: normalizeFont(15),
+    color: COLORS.BLACK,
   },
   container: {
-   alignItems: 'center',
-   //justifyContent:'center',
+    alignItems: 'center',
+    //justifyContent:'center',
     flex: 1,
-    
   },
   PhotoView: {
     backgroundColor: 'gray',
@@ -168,11 +183,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'white',
   },
-  Btnstyl:{
-    marginTop:150,
-    width:100
-  }
+  Btnstyl: {
+    marginTop: 150,
+    width: 100,
+  },
 });
-
-
-

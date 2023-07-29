@@ -25,3 +25,28 @@ export const RemoveLocallyData = async (key: any) => {
 };
 
 
+export const getTitleOfTab =(route:any)=>{
+if(route.key ==='PENDING'){
+  return 'PENDING';
+}
+else if (route.key ==='CHECKIN'){
+  return 'CHECKIN';
+}
+else if (route.key ==='COMPLETED'){
+  return 'COMPLETED';
+}
+else if (route.key ==='BOOKINGCOMPLETED'){
+  return 'BOOKINGCOMPLETED';
+}
+else if (route.key ==='CANCELLED'){
+  return 'CANCELLED';
+}
+else if (route.key ==='NOTAVAILABLE'){
+  return 'NOTAVAILABLE';
+}
+
+}
+
+
+
+

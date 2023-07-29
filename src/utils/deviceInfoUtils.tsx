@@ -29,3 +29,4 @@ export const deviceId = () => {
 export const deviceModal = () => {
     return DeviceInfo.getModel();
   };
+  

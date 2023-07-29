@@ -6,6 +6,7 @@ import {IMAGES} from '../../../constants/enums/imagesEnums';
 import {styles} from './styles';
 
 import {useMyProfileMutation} from '../../../domain/redux/RTKQuery/myProfile';
+import BackButton from '../../elements/BackButton';
 
 const MyProfile: React.FC = () => {
   const navigation = useNavigation();
@@ -41,17 +42,13 @@ const MyProfile: React.FC = () => {
     }
   };
 
-  const handleGoBack = () => {
-    navigation.goBack();
-  };
+ 
   const ProfileData = myProfileApiResult?.data;
 
   return (
     <View style={{flex: 1}}>
       <View style={styles.headerView}>
-        <Pressable onPress={handleGoBack}>
-          <Image source={IMAGES.BACKICON} style={styles.imgLogo} />
-        </Pressable>
+       <BackButton/>
         <Text style={styles.myProfile}>Profile</Text>
       </View>
       <View style={styles.imageMain}>
